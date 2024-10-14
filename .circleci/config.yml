@@ -8,24 +8,21 @@ jobs:
     steps:
       - checkout
       - node/install-packages:
-        pkg-manager: npm
-      - run: |
-        echo "Installing dependencies..."
-        npm install
+          pkg-manager: npm
   test:
     docker:
       - image: cimg/node:16.10
     steps:
       - checkout
       - node/install-packages:
-        pkg-manager: npm
+          pkg-manager: npm
       - run: |
-        echo "Runnning tests..."
-        npm run test
+          echo "Running tests..."
+          npm run test
 workflows:
-  simple_workflor:
+  simple_workflow:
     jobs:
       - build
       - test:
-        requires:
-          - build
+          requires:
+            - build
